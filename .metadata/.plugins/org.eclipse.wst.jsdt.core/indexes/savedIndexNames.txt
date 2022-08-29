@@ -1,0 +1,5 @@
+INDEX VERSION 1.4+C:\acorn202206\spring_work\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3311097942.index
+4219279280.index
+1205824980.index
+3016312073.index
