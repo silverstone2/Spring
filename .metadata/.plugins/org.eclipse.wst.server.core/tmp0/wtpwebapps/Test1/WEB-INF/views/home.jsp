@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-	<h1>인덱스페이지입니다.</h1>
+	<p>현재  페이지 : <strong>${requestScope.index }</strong></p>
 </div>
 </body>
 </html>
