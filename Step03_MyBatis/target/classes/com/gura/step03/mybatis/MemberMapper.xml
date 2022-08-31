@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<insert id="insert" parameterType="com.gura.step03.member.dto.MemberDto">
+		INSERT INTO member
+		(num, name, addr)
+		VALUES(member_seq.NEXTVAL, #{name}, #{addr})
+	</insert>
+	
+	<update id="update" parameterType="com.gura.step03.member.dto.MemberDto">
+		UPDATE member
+		SET name=#{name}, addr=#{addr}
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM member
+		WHERE num=#{num}
+	</delete>
+	
+	<!-- resultType="select 된 row 하나를 담을 데이터 type" -->
+	<!-- select된 row가 자동으로 dto에 담기게 해주는 조건은 column name == field name -->
+	<select id="getData" parameterType="int" resultType="com.gura.step03.member.dto.MemberDto">
+		SELECT num, name, addr
+		FROM member
+		WHERE num=#{num}
+	</select>
+	
+	<select id="getList" resultType="com.gura.step03.member.dto.MemberDto">
+		SELECT num, name, addr
+		FROM member
+		ORDER BY num ASC
+	</select>
+</mapper>
