@@ -5,6 +5,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/*
+ * @ 어노테이션을 많이 사용할 예정입니다.
+ * 
+ * 어노테이션에 대한 이해!
+ * 
+ * - 어노테이션이 붙은 클래스는 그 모양 그대로 사용되지 않고 런타임시에 변형되어서 사용된다.
+ * 
+ * 어떤 변형이 될까
+ * 
+ * 특정 클래스를 상속 받기도 하고, 특정 인터페이스를 구현하기도 하고
+ * 없던 메소드가 만들어지기도 하고, 없던 필드가 추가되기도 하고 동등의 작업이 자동화되어 있다.
+ */
+
 @Controller
 public class MemberController {
 	

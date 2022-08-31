@@ -3,5 +3,6 @@
   <module moduleId="org.eclipse.jst.jee.server:Step01_Basic" serverId="Tomcat v8.5 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Hello" serverId="Tomcat v8.5 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Step02_RequestParam" serverId="Tomcat v8.5 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Step03_MyBatis" serverId="Tomcat v8.5 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Test1" serverId="Tomcat v8.5 Server at localhost"/>
 </modules>
