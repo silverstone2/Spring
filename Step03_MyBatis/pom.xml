@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gura</groupId>
 	<artifactId>step03</artifactId>
-	<name>Step03_Batis</name>
+	<name>Step03_MyBatis</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -115,8 +115,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>  
-		
+		</dependency>
 		<!-- 추가 의존 라이브러리 -->
 		<!-- MyBatis 라이브러리 -->
 	  	<dependency>
@@ -180,8 +179,7 @@
 		    <groupId>com.oracle.database.jdbc</groupId>
 		    <artifactId>ojdbc8</artifactId>
 		    <version>21.1.0.0</version>
-		</dependency>
-		      
+		</dependency>        
 	</dependencies>
     <build>
         <plugins>
