@@ -11,10 +11,10 @@
 <div class="container">
 	<h1>회원 정보 수정 폼</h1>
 	<form action="${pageContext.request.contextPath }/member/update.do" method="post">
-		<input type="hidden" id="num" value="${dto.num }"/>
+		<input type="hidden" id="num" name="num" value="${dto.num }"/>
 		<div>
 			<label for="num">번호</label>
-			<input type="text" id="num" value="${requestScope.dto.num }" disabled />
+			<input type="text" id="num" name="num" value="${requestScope.dto.num }" disabled />
 		</div>
 		<div>
 			<label for="name">이름</label>

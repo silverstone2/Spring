@@ -13,6 +13,10 @@
       <ul>
       	<li><a href="${pageContext.request.contextPath }/member/list.do">회원 목록 보기</a></li>
       	<li><a href="${pageContext.request.contextPath }/todo/list.do">할일 목록 보기</a></li>
+      	<li><a href="${pageContext.request.contextPath }/send.do">테스트</a></li>
+      	<li><a href="${pageContext.request.contextPath }/send2.do">테스트2</a></li>
+      	<li><a href="${pageContext.request.contextPath }/send3.do">테스트3</a></li>
+      	<li><a href="${pageContext.request.contextPath }/send4.do">테스트4</a></li>
       </ul>
       <h2>공지사항</h2>
       <ul>

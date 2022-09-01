@@ -4,5 +4,6 @@
 	<!-- 사용할 Mapper xml 문서 등록하기 -->
 	<mappers>
 		<mapper resource="com/gura/step03/mybatis/MemberMapper.xml"/>
+		<mapper resource="com/gura/step03/mybatis/TodoMapper.xml"/>
 	</mappers>
 </configuration>

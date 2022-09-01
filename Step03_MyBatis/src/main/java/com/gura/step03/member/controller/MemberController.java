@@ -11,12 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gura.step03.member.dao.MemberDao;
 import com.gura.step03.member.dto.MemberDto;
 
-@Controller
+/*
+ *	컨트롤러에 대한 이해
+ *
+ *	- 컨트롤러에서는 dao 를 이용한 비지니스 로직 혹은 복잡한 비지니스 로직 처리는 하지 안는 것이 원칙이다.
+ *	- 따라서 컨트롤러에서 dao 에 의존하고 있다는 것은 바람직한 구조가 아니다.
+ *	- 그럼 dao 를 활용한 비지니스 로직 처리는 어떻게 해야하나?
+ *
+ *	- 답 : 서비스 객체를 이요해서 비지니스 로직을 처리해야한다.
+ *
+ *	- 따라서 컨트롤러는 dao 에 의존하지 않고 서비스에 의존하도록 해야 한다.
+ *	- 그럼 컨트롤러에서는 무엇을 해야 하는가?
+ *
+ *	- 답 : 클라이언트의 어떤 경로 요청에 대해서 어떤 서비스로 비지니스 로직을 처리하고
+ *		    어디로 어떻게 이동해서 응답해야 할지에 대한 작업만 하면 된다.
+ */
+
+//@Controller
 public class MemberController {
 	
 	// spring bean container 로 부터 MemberDao 인터페이스 type 의 참조값을 DI 받는다.
 	@Autowired
-	private MemberDao dao;
+	private MemberDao dao; //controller에 의해서 dao에 의존하고 있음.
 	
 	
 	@RequestMapping("/member/delete")

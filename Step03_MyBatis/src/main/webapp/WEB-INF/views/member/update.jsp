@@ -11,7 +11,7 @@
 	<div class="container">
 		<h1>알림</h1>
 		<p>
-			<strong>${param.name }</strong> 님의 정보를 수정했습니다.
+			<strong>${param.name }</strong> 번 님의 정보를 수정했습니다.
 			<a href="${pageContext.request.contextPath }/member/list.do">목록 보기</a>
 		</p>
 	</div>
