@@ -100,7 +100,7 @@ public class AuthAspect {
 	            //HttpSession 객체의 참조값 얻어와서 로그인 여부를 알아낸다.
 	            String id=(String)request.getSession().getAttribute("id");
 	            if(id == null) {//만일 로그인을 하지 않았으면
-	               //예외를 발생 시켜서 정상적인 응답을 받을수 없도록 한다.
+	               //예외를 발생 시켜서 정상적인 응답을 받을수 없도록 한다. 일부러 500번 버스를 태운다
 	               throw new RuntimeException("로그인이 필요 합니다.");
 	            }
 	         }

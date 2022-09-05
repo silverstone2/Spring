@@ -19,6 +19,15 @@
 	</listener>
 
 	<!-- Processes application requests -->
+	<!-- 
+		servlet name 은 마음대로 지을 수 있다.
+		단, 아래에 servlet 을 맵핑할 때 동일한 이름으로 맵핑을 해야 한다.
+		
+		DispatcherServlet 의 동작을 설정하고 싶으면 servlet-context.xml 문서를 수정하면 된다.
+		DispatcherServlet 은 서버가 시작된는 시점에 servlet-context.xml 문서를 로딩해서 동작을 준비한다.
+		
+		servlet-context.xml 문서는 주로 어떤 객체를 생성해서 Spring bean container에서 관리를 할지에 대한 설정이 들어 있다.
+	 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
