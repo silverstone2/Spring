@@ -25,11 +25,22 @@
 				FROM board_cafe
 				<include refid="searchCondition"/>
 				ORDER BY num DESC) result1)
-		<![CDATA[ 
+		<![CDATA[
 		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
 		]]>
+		
+		<![CDATA[  ]]>
 	</select>
+	<!-- 
+			이전에는 BETWEEN 연산자를 사용했었음 위의 코드를 비트윈으로 변환시키면 아래와 같다.
+			rnum BETWEEN #{startRowNum} AND #{endRowNum}
+			
+			하지만 이렇게 코딩을 할 경우에는 에러를 발생시킨다. 이유는 xml은 마크업 형식의 언어인데 <>에 되게 민감하다.
+	-->
 	
+	<!-- 
+		이전글과 다음글에 대한 select 할 때 LAED 와 LAG 함수가 필요하다
+	 -->
 	<select id="getCount" parameterType="cafeDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM board_cafe

@@ -18,7 +18,7 @@ public class FileController {
 	
 	@RequestMapping("/file/list")
 	public String list(HttpServletRequest request) {
-		
+		// ModelAndView로 전달해도 상관은 없음.
 		service.getList(request);
 		
 		return "file/list";

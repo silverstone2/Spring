@@ -30,12 +30,14 @@ public class CafeDaoImpl implements CafeDao{
 		session.insert("cafe.insert", dto);
 	}
 
+	// 검색 기능이 없었을 때 사용하던 메소드(현재 사용 안함)
 	@Override
 	public CafeDto getData(int num) {
 		
 		return session.selectOne("cafe.getData", num);
 	}
 
+	// 검색 기능 생기고 사용하는 메소드(사용중인 상태)
 	@Override
 	public CafeDto getData(CafeDto dto) {
 		
