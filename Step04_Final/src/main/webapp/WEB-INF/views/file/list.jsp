@@ -59,6 +59,9 @@
 				<td>${tmp.regdate }</td>
 				<td>
 					<c:if test="${tmp.writer eq id }">
+					<!-- 
+						id는 앞에 sessionScope가 생략되어 있는 것임.
+					 -->
 						<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
 					</c:if>
 				</td>

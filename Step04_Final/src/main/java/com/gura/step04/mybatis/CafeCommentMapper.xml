@@ -30,6 +30,9 @@
 		SELECT board_cafe_comment_seq.NEXTVAL
 		FROM DUAL
 	</select>
+	<!-- 
+		원글의 댓글은 자기자신의 글하고 commet 글번호와 같아야 하기 때문에 시퀀스값을 select하는 것이다.
+	 -->
 	<update id="update" parameterType="cafeCommentDto">
 		UPDATE board_cafe_comment
 		SET content=#{content}

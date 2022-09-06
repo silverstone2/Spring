@@ -6,9 +6,18 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
+			<!-- paging 처리 때문에 서브쿼리가 나오게 함 -->
 				(SELECT num,writer,title,orgFileName,saveFileName,
 					fileSize,regdate
 				FROM board_file
+				<!-- 
+					밑의 코드는 검색 키워드 때문에 추가된 코드
+					검색 조건에 따라서 다이나믹 쿼리가 달라짐
+					문법의 형식은 jsp와 비슷하며 조건이 모두 false이면 코드가 없는 것과 같은 효과임
+				 -->
+				 <!-- 
+				 	검색키워드가 없다면 where절은 실행이 안되기 때문에 choose절 코딩은 적용이 되면 안된다.
+				  -->
 				<choose>
 					<when test="title != null and orgFileName != null">
 						WHERE title LIKE '%${title}%' 
