@@ -68,6 +68,7 @@ public class CafeController {
 		
 		service.moreCommentList(request);
 		try {
+			// 5초 딜레이
 			Thread.sleep(5000);
 		} catch (Exception e) {
 			// TODO: handle exception
