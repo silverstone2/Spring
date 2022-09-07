@@ -33,7 +33,7 @@
 							</c:if>
 							<span>${tmp.regdate }</span>
 							<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-							<c:if test="${ (id ne null) and (tmp.writer eq id) }">
+							<c:if test="${ tmp.writer eq id }">
 								<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 								<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 							</c:if>

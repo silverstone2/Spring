@@ -303,7 +303,7 @@ public class CafeServiceImpl implements CafeService{
 		//댓글 전체 페이지의 갯수
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 
-		//view page 에 필요한 값 request 에 담아주기
+		//view page 에 필요한 값 request 에 담아주기(요기가 중요)
 		request.setAttribute("commentList", commentList);
 		request.setAttribute("num", num); //원글의 글번호
 		request.setAttribute("pageNum", pageNum); //댓글의 페이지 번호

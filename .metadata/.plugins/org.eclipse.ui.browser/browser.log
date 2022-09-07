@@ -117,3 +117,8 @@
 9월 06, 2022 16:50:19.258 [7788:2436:0906/165019.257:ERROR:interface_endpoint_client.cc(667)] Message 0 rejected by interface blink.mojom.WidgetHost
 9월 06, 2022 16:50:30.702 [7788:2436:0906/165030.702:ERROR:interface_endpoint_client.cc(667)] Message 0 rejected by interface blink.mojom.WidgetHost
 9월 06, 2022 16:56:01.467 [7788:2436:0906/165601.467:ERROR:interface_endpoint_client.cc(667)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 06, 2022 17:25:01.749 [7788:2436:0906/172501.748:ERROR:interface_endpoint_client.cc(667)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 06, 2022 17:25:01.749 [7788:2436:0906/172501.748:ERROR:interface_endpoint_client.cc(667)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 06, 2022 17:25:01.750 [7788:2436:0906/172501.748:ERROR:interface_endpoint_client.cc(667)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 06, 2022 17:26:37.91 [7788:2436:0906/172637.090:ERROR:interface_endpoint_client.cc(667)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 06, 2022 17:52:14.122 [7788:2436:0906/175214.121:ERROR:interface_endpoint_client.cc(667)] Message 0 rejected by interface blink.mojom.WidgetHost

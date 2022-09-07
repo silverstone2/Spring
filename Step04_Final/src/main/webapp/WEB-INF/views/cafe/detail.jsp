@@ -154,9 +154,14 @@
 						<li>삭제된 댓글 입니다.</li>
 					</c:when>
 					<c:otherwise>
+						<%-- 만일 댓글의 글번호가 댓글의 그룹번호와 같다면 (원글의 댓글이라면) --%>
 						<c:if test="${tmp.num eq tmp.comment_group }">
 							<li id="reli${tmp.num }">
 						</c:if>
+						<%--
+							만일 댓글의 글번호가 댓글의 그룹변화와 다르다면(댓글의 댓글이라면)
+							왼쪽 패딩을 50px 주어서 들여쓰기 효과를 주고 화살표 아이콘을 출력한다.
+						 --%>
 						<c:if test="${tmp.num ne tmp.comment_group }">
 							<li id="reli${tmp.num }" style="padding-left:50px;">
 								<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
@@ -165,30 +170,47 @@
 						</c:if>
 								<dl>
 									<dt>
+									<%-- 만일 프로필 이미지가 없다면 기본 아이콘 출력 --%>
 										<c:if test="${ empty tmp.profile }">
 											<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
 											  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
 											  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 											</svg>
 										</c:if>
+										<%-- 만일 프로필 이미지가 비지 않았다면(있다면) 프로필 이미지 출력 --%>
 										<c:if test="${not empty tmp.profile }">
 											<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
 										</c:if>
 										<span>${tmp.writer }</span>
+										<%-- 만일 글번호가 댓글의 그룹번호와 다르다면(댓글의 댓그이라면) 누구를 향한 댓글인지 출력하기 --%>
 										<c:if test="${tmp.num ne tmp.comment_group }">
 											@<i>${tmp.target_id }</i>
 										</c:if>
 										<span>${tmp.regdate }</span>
+										<%-- 답글 링크를 눌렀을 때  해당 댓글의 글번호를 얻어오기 위해 data-num 속성에<%-- 만일 프로필 이미ㅣ가 비지 않았다면(있다면) 프로필 이미지 출력 --%> 댓글의 번호 넣어두기 --%>
 										<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-										<c:if test="${ (id ne null) and (tmp.writer eq id) }">
+										<c:if test="${ tmp.writer eq sessionScope.id }">
 											<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 											<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 										</c:if>
 									</dt>
 									<dd>
+									<%--
+										댓글은 testarea 로 입력 받았기 때문에 tab, 공백, 개행 기호도 존재한다.
+										html 에서 pre 요소는 tab, 공백, 개행 기호를 해석해주는 요소이기 때문에
+										pre 요소의 innerText 로 댓글의 내용을 출력했다.
+										그리고 해당 댓글을 javascript 로 바로 수정할 수 있도록 댓글 번호를 조합해서
+										아이디를 부여해 놓았다.
+									 --%>
 										<pre id="pre${tmp.num }">${tmp.content }</pre>						
 									</dd>
 								</dl>
+								<%--
+									댓글의 댓글 폼은 미리 만들어서 숨겨놓았다가 답글 링크를 누르면 보이도록 한다
+									javascript 에서 폼을 바로 선택할 수 있도록 댓글 번호를 조합해서 아이디를 부여해 놓았다.
+									댓글의 댓글은 고유한 댓글 그룹 번호가 있으므로 form 전송될 때 같이 전송되도록 해 놓았다.
+									댓글의 그룹번호는 원글의 댓글 글번호이다.
+								 --%>
 								<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
 									<input type="hidden" name="ref_group" value="${dto.num }"/>
 									<input type="hidden" name="target_id" value="${tmp.writer }"/>
@@ -208,7 +230,12 @@
 				</c:choose>
 			</c:forEach>
 		</ul>
-	</div>		
+	</div>
+	<%--
+		추가로 댓글을 ajax 요청할 때 띄울 회전하는 아이콘 이미지
+		일단 숨겨 두었다가 javascript 에서 조건부로 보이게 하고 다시 숨기고 하는 작업을 한다,
+		위에 css 에서 keyframe 을 활용해서 회전시키고 있다.
+	 --%>		
 	<div class="loader">
 		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
 			  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
@@ -233,6 +260,7 @@
 	//클라이언트가 로그인 했는지 여부
 	let isLogin=${ not empty id };
 	
+	// 원 글의 댓글 폼에 submit 이벤트가 일어났을 때 실행할 함수 등록
 	document.querySelector(".insert-form")
 		.addEventListener("submit", function(e){
 			//만일 로그인 하지 않았으면 
@@ -240,6 +268,7 @@
 				//폼 전송을 막고 
 				e.preventDefault();
 				//로그인 폼으로 이동 시킨다.
+				// 로그인 성공 후 다시 해당글 자세히 보기 페이지로 돌아올 수 있도록 url 정보를 같이 전달한다.
 				location.href=
 					"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
 			}
@@ -288,12 +317,14 @@
 			
 			/*
 				해당 페이지의 내용을 ajax 요청을 통해서 받아온다.
-				"pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다. 
+				"pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다.
+				pageNum 은 새로 받아올 댓글의 페이지 번호
+				num 은 원글의 글번호(ref_group 번호)
 			*/
 			ajaxPromise("ajax_comment_list.do","get",
 					"pageNum="+currentPage+"&num=${dto.num}")
 			.then(function(response){
-				//json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다.
+				//json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다. json이면 text 대신 json을 적어준다.
 				return response.text();
 			})
 			.then(function(data){
@@ -302,8 +333,10 @@
 				// beforebegin | afterbegin | beforeend | afterend
 				document.querySelector(".comments ul")
 					.insertAdjacentHTML("beforeend", data);
+				//insertAdjacentHTML 이걸 반드시 넣어줘야함 html로 해석해주려면 (만약 이걸 안 넣어주면 단순 문자열로만 해석하고 끝남)
 				//로딩이 끝났다고 표시한다.
 				isLoading=false;
+				
 				//새로 추가된 댓글 li 요소 안에 있는 a 요소를 찾아서 이벤트 리스너 등록 하기 
 				addUpdateListener(".page-"+currentPage+" .update-link");
 				addDeleteListener(".page-"+currentPage+" .delete-link");
